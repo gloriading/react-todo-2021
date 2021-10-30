@@ -1,4 +1,4 @@
-body {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,7 +9,58 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+.todo__container {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 95%;
+  height: 100vh;
+  overflow: hidden;
+}
+.todo__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+}
+.todo__form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 1rem 0;
+}
+input[type='text'] {
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  outline: none;
+}
+input[type='text']:focus {
+  background-color: #ddd;
+}
+.todo__addtodo {
+  margin-left: 1rem;
+}
+.todos__container {
+  overflow: auto;
+}
+.todo__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+}
+.todo__item > p {
+  flex: 1;
+  line-height: 1.5;
+}
+.todo__item__delete {
+  color: #de3163;
+  margin-left: 0.5rem;
 }
