@@ -8,7 +8,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/* General */
 button {
   padding: 0.4rem 0.8rem;
   background-color: #ddd;
@@ -29,6 +29,8 @@ button {
 button:hover {
   box-shadow: 0 0 0 28px rgba(0, 0, 0, 0.25) inset;
 }
+
+/* App.js */
 .todo__container {
   margin: 0 auto;
   max-width: 960px;
@@ -41,6 +43,27 @@ button:hover {
   align-items: center;
   padding: 3rem 0;
 }
+.todos__container {
+  overflow: auto;
+}
+.slideDown__hidden {
+  width: 100%;
+  position: fixed;
+  top: -200px;
+  left: 0;
+  z-index: 20;
+  transition: all 0.2s;
+}
+.slideDown__show {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  z-index: 20;
+  transition: all 0.2s;
+}
+
+/* TodoForm.js */
 .todo__form__container {
   display: flex;
   justify-content: center;
@@ -61,9 +84,8 @@ input[type='text']:focus {
 .todo__addtodo {
   margin-left: 1rem;
 }
-.todos__container {
-  overflow: auto;
-}
+
+/* TodoItem.js */
 .todo__item {
   display: flex;
   justify-content: space-between;
@@ -78,6 +100,31 @@ input[type='text']:focus {
 .todo__item__delete {
   color: #de3163;
   margin-left: 0.5rem;
+}
+
+/* TodoFormSlideDown */
+.todoFormSlideDown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+.todoFormSlideDown__form {
+  flex: 1;
+}
+.goTop {
+  color: #ff6348;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+.goTop:hover {
+  color: #ff7f50;
+}
+.todoFormSlideDown > p {
+  color: #747d8c;
 }
 
 @media only screen and (max-width: 768px) {
