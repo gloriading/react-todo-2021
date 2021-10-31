@@ -33,8 +33,6 @@ button:hover {
   margin: 0 auto;
   max-width: 960px;
   width: 95%;
-  /* height: 100vh;
-  overflow: hidden; */
   min-height: 100vh;
 }
 .todo__header {
@@ -80,4 +78,38 @@ input[type='text']:focus {
 .todo__item__delete {
   color: #de3163;
   margin-left: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .todo__item {
+    padding: 0.5rem 1rem;
+  }
+  .todo__item__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .todo__item__delete {
+    margin-left: 0;
+  }
+  input[type='text'] {
+    width: 250px;
+    padding: 0.4rem;
+  }
+  button {
+    padding: 0.4rem;
+  }
+}
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .todo__item {
+    padding: 0.5rem 0;
+  }
+  .todo__container {
+    width: 90%;
+  }
 }

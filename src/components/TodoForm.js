@@ -32,7 +32,7 @@ function TodoForm(props) {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
-        <button className="todo__addtodo" onClick={handleAddTodo}>Add a todo</button>
+        <button className="todo__addtodo" onClick={handleAddTodo}>Add</button>
     </div>
   )
 }
