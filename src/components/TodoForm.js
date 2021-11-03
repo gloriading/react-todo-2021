@@ -1,20 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
+import useInputState from '../hooks/useInputState';
 
 function TodoForm(props) {
-  const [inputVal, setInputVal] = useState('');
+  const [inputVal, handleChange, resetInput] = useInputState('');
 
-  const handleInputChange = (e) => {
-    const newInput = e.target.value;
-    setInputVal(newInput);
-  };
 
   const handleAddTodo = () => {
     if (!inputVal.trim()) {
-      setInputVal('')
+      resetInput();
       return;  
     }
     props.addTodo(inputVal)
-    setInputVal('')
+    resetInput();
   }
 
   const handleKeyDown = (e) => {
@@ -29,7 +26,7 @@ function TodoForm(props) {
           type="text"
           placeholder="What do you need to do?"
           value={inputVal}
-          onChange={handleInputChange}
+          onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
         <button className="todo__addtodo" onClick={handleAddTodo}>Add</button>

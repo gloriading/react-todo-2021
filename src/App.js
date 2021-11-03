@@ -2,22 +2,10 @@ import React, { useState, useEffect } from 'react';
 import TodoItem from './components/TodoItem';
 import TodoForm from './components/TodoForm';
 import TodoFormSlideDown from './components/TodoFormSlideDown';
+import useScrollDown from './hooks/useScrollDown';
 
 function App() {
-  const [showTopSearch, setShowTopSearch] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const SOHW_POINT = 190;
-      if (window.scrollY > SOHW_POINT) {
-        setShowTopSearch(true)
-      } else {
-        setShowTopSearch(false)
-
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const isScrollDown = useScrollDown();
 
   const mockTodos = [...Array(10).keys()].map(elm => {
     return {
@@ -55,7 +43,7 @@ function App() {
   
   return (
     <div className="todo__container">
-      <div className={showTopSearch ? 'slideDown__show': 'slideDown__hidden'}>
+      <div className={isScrollDown ? 'slideDown__show': 'slideDown__hidden'}>
         <TodoFormSlideDown
           addTodo={addTodo}
           todoCount={todoCount}

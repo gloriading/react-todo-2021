@@ -159,4 +159,12 @@ input[type='text']:focus {
   .todo__container {
     width: 90%;
   }
+
+  /* TodoFormSlideDown */
+  .goTop {
+    display: none;
+  }
+  .todoFormSlideDown > p {
+    display: none;
+  }
 }
