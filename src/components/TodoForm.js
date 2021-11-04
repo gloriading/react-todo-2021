@@ -4,7 +4,6 @@ import useInputState from '../hooks/useInputState';
 function TodoForm(props) {
   const [inputVal, handleChange, resetInput] = useInputState('');
 
-
   const handleAddTodo = () => {
     if (!inputVal.trim()) {
       resetInput();
