@@ -1,3 +1,5 @@
+@import './scss/variables';
+@import './scss/partials';
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
 
 * {
@@ -30,10 +32,10 @@ button:hover {
   box-shadow: 0 0 0 28px rgba(0, 0, 0, 0.25) inset;
 }
 .warm__background {
-  background-color: #ffefa0;
+  background-color: $BG_WARM_100;
 }
 .chill__background {
-  background-color: #d8e3e7;
+  background-color: $BG_CHILL_100;
 }
 
 /* App.js */
@@ -44,29 +46,26 @@ button:hover {
   min-height: 100vh;
 }
 .todo__header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-row-center-all;
   padding: 3rem 0;
 }
 .todos__container {
   overflow: auto;
 }
-.slideDown__hidden {
+%slideDown__base {
   width: 100%;
   position: fixed;
-  top: -200px;
   left: 0;
   z-index: 20;
   transition: all 0.2s;
 }
+.slideDown__hidden {
+  @extend %slideDown__base;
+  top: -200px;
+}
 .slideDown__show {
-  width: 100%;
-  position: fixed;
+  @extend %slideDown__base;
   top: 0px;
-  left: 0;
-  z-index: 20;
-  transition: all 0.2s;
 }
 .footer {
   padding: 2rem;
@@ -82,11 +81,11 @@ button:hover {
   font-weight: bold;
 }
 .theme__warm {
-  color: #ac4b1c;
+  color: $TEXT_WARM_100;
   font-family: monospace;
 }
 .theme__chill {
-  color: #132c33;
+  color: $TEXT_CHILL_100;
   font-family: monospace;
 }
 .theme__chill.theme__active {
@@ -101,9 +100,7 @@ button:hover {
 
 /* TodoForm.js */
 .todo__form__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-row-center-all;
   background-color: whitesmoke;
   padding: 1rem 0;
 }
@@ -123,9 +120,7 @@ input[type='text']:focus {
 
 /* TodoItem.js */
 .todo__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @extend %flex-row-between-center;
   padding: 1rem 2rem;
   border-bottom: 1px solid #ddd;
 }
@@ -140,9 +135,7 @@ input[type='text']:focus {
 
 /* TodoFormSlideDown */
 .todoFormSlideDown {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @extend %flex-row-between-center;
   background-color: whitesmoke;
   padding: 1rem;
 }

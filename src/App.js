@@ -5,6 +5,7 @@ import ThemeToggle from './components/ThemeToggle';
 import TodoFormSlideDown from './components/TodoFormSlideDown';
 import useScrollDown from './hooks/useScrollDown';
 import { ThemeContext } from './context/ThemeContext';
+import './App.scss';
 
 function App() {
   const { theme } = useContext(ThemeContext);
