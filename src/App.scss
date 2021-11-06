@@ -12,16 +12,16 @@
 }
 /* General */
 button {
-  padding: 0.4rem 0.8rem;
-  background-color: #ddd;
+  padding: 0.3rem 0.4rem;
+  // padding: 0.6rem 0.8rem;
   border: none;
-  border-radius: 3px;
-  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.05) inset;
+  border: thin solid rgba(0, 0, 0, 0.1);
   color: #333;
+  background-color: $WHITE;
   letter-spacing: 0.1em;
   cursor: pointer;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   vertical-align: middle;
   white-space: nowrap;
   transition-property: transform;
@@ -37,12 +37,21 @@ button:hover {
 .chill__background {
   background-color: $BG_CHILL_100;
 }
+.warm__text {
+  color: $TEXT_WARM_100;
+}
+.chill__text {
+  color: $TEXT_CHILL_100;
+}
 
 /* App.js */
-.todo__container {
+%container-base {
   margin: 0 auto;
   max-width: 960px;
   width: 95%;
+}
+.todo__container {
+  @extend %container-base;
   min-height: 100vh;
 }
 .todo__header {
@@ -58,6 +67,10 @@ button:hover {
   left: 0;
   z-index: 20;
   transition: all 0.2s;
+
+  > div {
+    @extend %container-base;
+  }
 }
 .slideDown__hidden {
   @extend %slideDown__base;
@@ -67,32 +80,37 @@ button:hover {
   @extend %slideDown__base;
   top: 0px;
 }
+
+// Footer
 .footer {
   padding: 2rem;
   font-size: 0.8rem;
   display: flex;
   justify-content: space-between;
-}
-.footer span {
-  cursor: crosshair;
-  transition: all 0.2s;
-}
-.footer span:hover {
-  font-weight: bold;
+
+  span {
+    cursor: crosshair;
+    transition: all 0.2s;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }
 .theme__warm {
-  color: $TEXT_WARM_100;
+  @extend .warm__text;
   font-family: monospace;
+
+  &.theme__active {
+    border-bottom: 5px solid;
+  }
 }
 .theme__chill {
-  color: $TEXT_CHILL_100;
+  @extend .chill__text;
   font-family: monospace;
-}
-.theme__chill.theme__active {
-  border-bottom: 5px solid;
-}
-.theme__warm.theme__active {
-  border-top: 5px solid;
+  &.theme__active {
+    border-bottom: 5px solid;
+  }
 }
 .divider {
   margin: 0 0.5rem;
@@ -101,18 +119,23 @@ button:hover {
 /* TodoForm.js */
 .todo__form__container {
   @extend %flex-row-center-all;
-  background-color: whitesmoke;
   padding: 1rem 0;
+  > div {
+    @extend %flex-row-center-all;
+  }
 }
 input[type='text'] {
   font-size: 1.2rem;
   padding: 0.4rem 0.8rem;
   border: none;
   outline: none;
-  width: 300px;
+  width: 400px;
+  margin-left: 1rem;
 }
 input[type='text']:focus {
-  background-color: #ddd;
+  background-color: #eee;
+  border-bottom: 1px solid;
+  margin-bottom: -1px;
 }
 .todo__addtodo {
   margin-left: 1rem;
@@ -136,24 +159,20 @@ input[type='text']:focus {
 /* TodoFormSlideDown */
 .todoFormSlideDown {
   @extend %flex-row-between-center;
-  background-color: whitesmoke;
   padding: 1rem;
 }
 .todoFormSlideDown__form {
   flex: 1;
 }
 .goTop {
-  color: #ff6348;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s;
   font-weight: bold;
   padding: 0.5rem 1rem;
-}
-.goTop:hover {
-  color: #ff7f50;
-}
-.todoFormSlideDown > p {
-  color: #747d8c;
+
+  &:hover {
+    transform: rotate(30deg);
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -179,14 +198,14 @@ input[type='text']:focus {
   }
 }
 @media only screen and (max-width: 480px) {
+  %container-base {
+    width: 100%;
+  }
   h1 {
     font-size: 1.5rem;
   }
   .todo__item {
     padding: 0.5rem 0;
-  }
-  .todo__container {
-    width: 100%;
   }
   .todos__container {
     padding: 1rem;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { FiTrash, FiCheckSquare, FiSquare } from "react-icons/fi";
 
 function TodoItem(props) {
   const handleDelete = (id) => {
@@ -10,10 +11,10 @@ function TodoItem(props) {
       <p>{props.text}</p>
       <div className="todo__item__actions">
         <button className="todo__item__update" onClick={() => props.toggleTodo(props.id)}>
-          {props.isDone ? 'Done' : 'Todo'}
+          {props.isDone ? <FiCheckSquare /> : <FiSquare />}
         </button>
         <button className="todo__item__delete" onClick={() => handleDelete(props.id)}>
-          Delete
+          <FiTrash />
         </button>
       </div>
     </div>

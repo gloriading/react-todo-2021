@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { IconContext } from "react-icons";
 
 export const ThemeContext = createContext();
 
@@ -7,7 +8,9 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
+      <IconContext.Provider value={{ size: '1.2rem' }}>
+        {children}
+      </IconContext.Provider>
     </ThemeContext.Provider>
   )
 };

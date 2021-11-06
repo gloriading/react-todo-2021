@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useInputState from '../hooks/useInputState';
+import { FiPlusSquare } from "react-icons/fi";
+import DateTimePicker from 'react-datetime-picker';
 
-function TodoForm(props) {
+function TodoForm({ addTodo }) {
   const [inputVal, handleChange, resetInput] = useInputState('');
+  const [value, onChange] = useState(new Date());
+  const handleDateChange = (x) => {
+    console.log(x)
+    console.log(new Date())
+    onChange(x)
+  }
 
   const handleAddTodo = () => {
     if (!inputVal.trim()) {
       resetInput();
       return;  
     }
-    props.addTodo(inputVal)
+    addTodo(inputVal)
     resetInput();
   }
 
@@ -20,15 +28,22 @@ function TodoForm(props) {
   };
 
   return (
-    <div className="todo__form__container">
-        <input
-          type="text"
-          placeholder="What do you need to do?"
-          value={inputVal}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-        <button className="todo__addtodo" onClick={handleAddTodo}>Add</button>
+    <div className='todo__form__container'>
+        {/* <DateTimePicker disableClock={true} onChange={handleDateChange} value={value} /> */}
+
+        <div>
+          <input
+            type="text"
+            placeholder="What do you need to do?"
+            value={inputVal}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <button className="todo__addtodo" onClick={handleAddTodo}>
+            <FiPlusSquare />
+          </button>
+        </div>
+        
     </div>
   )
 }
