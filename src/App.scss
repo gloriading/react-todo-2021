@@ -146,6 +146,13 @@ input[type='text']:focus {
   @extend %flex-row-between-center;
   padding: 1rem 2rem;
   border-bottom: 1px solid #ddd;
+  gap: 1rem;
+
+  > textarea {
+    outline: none;
+    resize: none;
+    flex: 1;
+  }
 }
 .todo__item > p {
   flex: 1;

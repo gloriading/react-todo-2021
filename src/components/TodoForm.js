@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { TodoContext } from '../context/TodoContext';
 import useInputState from '../hooks/useInputState';
 import { FiPlusSquare } from "react-icons/fi";
 import DateTimePicker from 'react-datetime-picker';
 
-function TodoForm({ addTodo }) {
+function TodoForm() {
+  const { addTodo } = useContext(TodoContext)
   const [inputVal, handleChange, resetInput] = useInputState('');
   const [value, onChange] = useState(new Date());
   const handleDateChange = (x) => {

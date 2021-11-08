@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodoContext } from '../context/TodoContext';
 import TodoForm from './TodoForm';
 import ussThemeColors from '../hooks/ussThemeColors';
 import { FiChevronUp } from "react-icons/fi";
 import { joinClasses } from '../helpers/utils';
 
-function TodoFormSlideDown(props) {
+function TodoFormSlideDown() {
+  const { addTodo, doneCount, todoCount } = useContext(TodoContext);
   const [mainBgClass, mainTextClass] = ussThemeColors();
 
   const goToTop = () => {
@@ -18,9 +20,9 @@ function TodoFormSlideDown(props) {
         <FiChevronUp />
       </div>
       <div className="todoFormSlideDown__form">
-        <TodoForm addTodo={props.addTodo} />
+        <TodoForm />
       </div>
-      <p className={mainTextClass}> { props.doneCount} / { props.todoCount } </p>
+      <p className={mainTextClass}> { doneCount} / { todoCount } </p>
     </div>
   )
 }
