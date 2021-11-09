@@ -158,9 +158,17 @@ input[type='text']:focus {
   flex: 1;
   line-height: 1.5;
 }
+.todo__item__actions {
+  @extend %flex-row-center-all;
+  gap: 0.5rem;
+}
 .todo__item__delete {
   color: #de3163;
-  margin-left: 0.5rem;
+}
+textarea {
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* TodoFormSlideDown */
