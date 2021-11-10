@@ -6,7 +6,7 @@ import { FiChevronUp } from "react-icons/fi";
 import { joinClasses } from '../helpers/utils';
 
 function TodoFormSlideDown() {
-  const { addTodo, doneCount, todoCount } = useContext(TodoContext);
+  const { doneCount, todoCount } = useContext(TodoContext);
   const [mainBgClass, mainTextClass] = ussThemeColors();
 
   const goToTop = () => {

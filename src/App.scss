@@ -149,8 +149,6 @@ input[type='text']:focus {
   gap: 1rem;
 
   > textarea {
-    outline: none;
-    resize: none;
     flex: 1;
   }
 }
@@ -169,6 +167,8 @@ textarea {
   padding: 1rem;
   font-size: 1rem;
   line-height: 1.5;
+  outline: none;
+  resize: none;
 }
 
 /* TodoFormSlideDown */

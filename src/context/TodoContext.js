@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-
+import { TodoFormProvider } from './TodoFormContext';
 export const TodoContext = createContext();
 
 const mockTodos = [...Array(10).keys()].map(elm => {
@@ -44,7 +44,9 @@ export const TodoProvider = ({ children }) => {
 
   return (
     <TodoContext.Provider value={{ todoCount, doneCount, todos, addTodo, updateTodo, deleteTodo, toggleTodo }}>
-      {children}
+      <TodoFormProvider>
+        {children}
+      </TodoFormProvider>
     </TodoContext.Provider>
   )
 };

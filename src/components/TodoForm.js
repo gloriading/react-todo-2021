@@ -1,26 +1,30 @@
 import React, { useState, useContext } from 'react'
 import { TodoContext } from '../context/TodoContext';
-import useInputState from '../hooks/useInputState';
+import { TodoFormContext } from '../context/TodoFormContext';
 import { FiPlusSquare } from "react-icons/fi";
 import DateTimePicker from 'react-datetime-picker';
 
 function TodoForm() {
-  const { addTodo } = useContext(TodoContext)
-  const [inputVal, handleChange, resetInput] = useInputState('');
+  const { addTodo } = useContext(TodoContext);
+  const { pendingTodo, setPendingTodo, resetPendingTodo } = useContext(TodoFormContext);
+
   const [value, onChange] = useState(new Date());
   const handleDateChange = (x) => {
-    console.log(x)
-    console.log(new Date())
+    // console.log(x)
+    // console.log(new Date())
     onChange(x)
   }
+  const handleChange =  (e) => {
+    setPendingTodo(e.target.value);
+  };
 
   const handleAddTodo = () => {
-    if (!inputVal.trim()) {
-      resetInput();
+    if (!pendingTodo.trim()) {
+      resetPendingTodo();
       return;  
     }
-    addTodo(inputVal)
-    resetInput();
+    addTodo(pendingTodo)
+    resetPendingTodo();
   }
 
   const handleKeyDown = (e) => {
@@ -37,7 +41,7 @@ function TodoForm() {
           <input
             type="text"
             placeholder="What do you need to do?"
-            value={inputVal}
+            value={pendingTodo}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />
