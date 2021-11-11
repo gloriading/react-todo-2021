@@ -25,7 +25,7 @@ function Modal({ children }, ref) {
   }), [closeFn])
 
   return createPortal(isOpen ? (
-    <div className="modal">
+    <div className="modal__container modal__fade">
       
       <div className="modal__content">
       <FiXCircle className="modal__close" onClick={closeFn} size="1.5rem" />

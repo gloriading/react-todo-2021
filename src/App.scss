@@ -79,6 +79,10 @@
       font-weight: bold;
     }
   }
+
+  .divider {
+    margin: 0 0.5rem;
+  }
 }
 .theme__warm {
   @extend .warm__text;
@@ -95,33 +99,33 @@
     border-bottom: 5px solid;
   }
 }
-.divider {
-  margin: 0 0.5rem;
-}
 
 /* TodoForm.js */
 .todo__form__container {
   @extend %flex-row-center-all;
   padding: 1rem 0;
+
   > div {
     @extend %flex-row-center-all;
   }
-}
-input[type='text'] {
-  font-size: 1.2rem;
-  padding: 0.4rem 0.8rem;
-  border: none;
-  outline: none;
-  width: 400px;
-  margin-left: 1rem;
-}
-input[type='text']:focus {
-  background-color: #eee;
-  border-bottom: 1px solid;
-  margin-bottom: -1px;
-}
-.todo__addtodo {
-  margin-left: 1rem;
+
+  input[type='text'] {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    outline: none;
+    width: 400px;
+    margin-left: 1rem;
+  }
+  input[type='text']:focus {
+    background-color: #eee;
+    border-bottom: 1px solid;
+    margin-bottom: -1px;
+  }
+
+  .todo__addtodo {
+    margin-left: 1rem;
+  }
 }
 
 /* TodoItem.js */
@@ -134,63 +138,68 @@ input[type='text']:focus {
   > textarea {
     flex: 1;
   }
-}
-.todo__item > p {
-  flex: 1;
-  line-height: 1.5;
-}
-.todo__item__actions {
-  @extend %flex-row-center-all;
-  gap: 0.5rem;
-}
-.todo__item__delete {
-  color: #de3163;
-}
-textarea {
-  padding: 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  outline: none;
-  resize: none;
+  > p {
+    flex: 1;
+    line-height: 1.5;
+  }
+
+  .todo__item__actions {
+    @extend %flex-row-center-all;
+    gap: 0.5rem;
+  }
+  .todo__item__delete {
+    color: $ACCENT_RED;
+  }
+  textarea {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    outline: none;
+    resize: none;
+  }
 }
 
 /* TodoFormSlideDown */
 .todoFormSlideDown {
   @extend %flex-row-between-center;
   padding: 1rem;
-}
-.todoFormSlideDown__form {
-  flex: 1;
-}
-.goTop {
-  cursor: pointer;
-  transition: all 0.2s;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
 
-  &:hover {
-    transform: rotate(30deg);
+  .todoFormSlideDown__form {
+    flex: 1;
+  }
+  .goTop {
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      transform: rotate(30deg);
+    }
   }
 }
 
 @media only screen and (max-width: 768px) {
   .todo__item {
     padding: 0.5rem 1rem;
+    .todo__item__actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .todo__item__delete {
+      margin-left: 0;
+    }
   }
-  .todo__item__actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0.5rem;
+  .todo__form__container {
+    input[type='text'] {
+      width: 250px;
+      padding: 0.4rem;
+    }
   }
-  .todo__item__delete {
-    margin-left: 0;
-  }
-  input[type='text'] {
-    width: 250px;
-    padding: 0.4rem;
-  }
+
   button {
     padding: 0.4rem;
   }
@@ -210,10 +219,12 @@ textarea {
   }
 
   /* TodoFormSlideDown */
-  .goTop {
-    display: none;
-  }
-  .todoFormSlideDown > p {
-    display: none;
+  .todoFormSlideDown {
+    .goTop {
+      display: none;
+    }
+    > p {
+      display: none;
+    }
   }
 }
