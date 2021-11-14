@@ -7,6 +7,9 @@ function AddTodo() {
   const openTodoForm = () => {
     modal.current.open();
   };
+  const submitCallback = () => {
+    modal.current.close();
+  };
   
   return (
     <>
@@ -18,7 +21,7 @@ function AddTodo() {
       </span>
      
       <Modal ref={modal}>
-          <TodoForm submitCallback={modal.current.close} />
+          <TodoForm submitCallback={submitCallback} />
       </Modal>
     </>
   )

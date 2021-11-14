@@ -78,13 +78,13 @@
 .addTodo__action {
   @extend %flex-row-center-all;
   padding: 0.6rem 0.8rem;
-  border: thin dotted #666;
+  border: thin dotted $GREY;
   cursor: pointer;
   transition: border 0.2s;
   margin-left: 1rem;
 
   &:hover {
-    border: thin solid #666;
+    border: thin solid $GREY;
   }
 
   > p {
@@ -110,6 +110,18 @@
 
   .divider {
     margin: 0 0.5rem;
+  }
+}
+.copyright {
+  color: $GREY;
+
+  > a {
+    color: $ACCENT_RED;
+    transition: color 0.2s;
+
+    &:hover {
+      color: darken($ACCENT_RED, 10%);
+    }
   }
 }
 .theme__warm {
@@ -165,7 +177,7 @@
 .todo__item {
   @extend %flex-row-between-center;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $GREY_LIGHT;
   gap: 1rem;
 
   > textarea {
@@ -176,7 +188,7 @@
     line-height: 1.5;
   }
   &.isDone {
-    color: #666;
+    color: $GREY;
     text-decoration: line-through;
   }
 

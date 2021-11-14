@@ -6,10 +6,13 @@ import { joinClasses } from '../helpers/utils';
 function Footer() {
   const [mainBgClass] = useThemeColors();
   const footerStyle = joinClasses('footer', mainBgClass);
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className={footerStyle}>
-        <p>2021.10.30 + <i>Gloria Ding</i></p>
+        <p className="copyright">
+          &copy; Copyright {currentYear}, <a href="https://www.linkedin.com/in/gloriading/" target="_blank" rel="noreferrer">Gloria Ding</a>
+        </p>
         <p>
           <ThemeToggle themeName='warm' />
           <span className="divider">|</span>
