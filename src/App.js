@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import { TodoContext } from './context/TodoContext';
 import Footer from './components/Footer';
 import TodoItem from './components/TodoItem';
-import TodoForm from './components/TodoForm';
+import AddTodo from './components/AddTodo';
 import TodoFormSlideDown from './components/TodoFormSlideDown';
 import useScrollDown from './hooks/useScrollDown';
-import ussThemeColors from './hooks/ussThemeColors';
+import useThemeColors from './hooks/useThemeColors';
 import { joinClasses } from './helpers/utils';
 import './App.scss';
 
 function App() {
-  const [mainBgClass, mainTextClass] = ussThemeColors();
-  const { todos } = useContext(TodoContext);
+  const [mainBgClass, mainTextClass] = useThemeColors();
+  const { todos, doneCount, todoCount  } = useContext(TodoContext);
   const isScrollDown = useScrollDown();
   const headerStyle = joinClasses('todo__header', mainBgClass, mainTextClass);
   
@@ -22,10 +22,13 @@ function App() {
       </div>
       
       <div className={headerStyle}>
-        <h1>Yup, I'm a Todo App</h1>
+        <h1>G.todo</h1>
+        <AddTodo />
+        <div className="todos__data">
+          <p className={mainTextClass}> { doneCount} / { todoCount } </p>
+        </div>
       </div>
       
-      <TodoForm />
       
       <div className="todos__container">
         {todos.map(todo => <TodoItem key={todo.id} {...todo} />)}

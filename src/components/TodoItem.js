@@ -3,6 +3,7 @@ import { TodoContext } from '../context/TodoContext';
 import useInputState from '../hooks/useInputState';
 import useToggle from '../hooks/useToggle';
 import { FiTrash, FiCheckSquare, FiSquare, FiEdit, FiCheck } from "react-icons/fi";
+import { joinClasses } from '../helpers/utils';
 
 function TodoItem(props) {
   const { deleteTodo, updateTodo, toggleTodo } = useContext(TodoContext);
@@ -33,8 +34,9 @@ function TodoItem(props) {
     }
   },[isUpdating])
 
+  const todoItemStyle = joinClasses('todo__item', props.isDone ? 'isDone' : '');
   return (
-    <div className="todo__item">
+    <div className={todoItemStyle}>
       {isUpdating ? <textarea ref={textareaRef} value={inputVal} onChange={handleChange}></textarea> : <p>{props.text}</p>}
       <div className="todo__item__actions">
         

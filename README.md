@@ -1,10 +1,12 @@
-# Todo 20211030
+# G.todo
+
+## Todo App with React
+
+> Developing time: 2021.10.30 - 2021.11.14
+
+## Features
 
 ## Libraries
-
-- React-DateTime-Picker
-
-  - https://www.npmjs.com/package/react-datetime-picker
 
 - React Icons
 

@@ -30,8 +30,7 @@
 /* App.js */
 %container-base {
   margin: 0 auto;
-  max-width: 960px;
-  width: 95%;
+  max-width: 1024px;
 }
 .todo__container {
   @extend %container-base;
@@ -40,6 +39,17 @@
 .todo__header {
   @extend %flex-row-center-all;
   padding: 3rem 0;
+  position: relative;
+
+  .todos__data {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+
+    > p {
+      font-size: 0.8rem;
+    }
+  }
 }
 .todos__container {
   overflow: auto;
@@ -62,6 +72,24 @@
 .slideDown__show {
   @extend %slideDown__base;
   top: 0px;
+}
+
+/* TodoBelt */
+.addTodo__action {
+  @extend %flex-row-center-all;
+  padding: 0.6rem 0.8rem;
+  border: thin dotted #666;
+  cursor: pointer;
+  transition: border 0.2s;
+  margin-left: 1rem;
+
+  &:hover {
+    border: thin solid #666;
+  }
+
+  > p {
+    font-size: 0.8rem;
+  }
 }
 
 // Footer
@@ -102,29 +130,34 @@
 
 /* TodoForm.js */
 .todo__form__container {
-  @extend %flex-row-center-all;
   padding: 1rem 0;
+  overflow: hidden;
+  @extend %flex-column-start-all;
+  gap: 1rem;
 
-  > div {
-    @extend %flex-row-center-all;
-  }
-
-  input[type='text'] {
-    font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
-    border: none;
+  textarea {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
     outline: none;
-    width: 400px;
-    margin-left: 1rem;
+    resize: none;
+    width: 480px;
+    max-height: 100%;
   }
-  input[type='text']:focus {
-    background-color: #eee;
-    border-bottom: 1px solid;
-    margin-bottom: -1px;
+
+  textarea:focus {
+    background-color: $WHITE_100;
+    border: 1px solid $BG_CHILL_100;
   }
 
   .todo__addtodo {
-    margin-left: 1rem;
+    @extend %flex-row-center-end;
+    align-self: flex-end;
+    padding: 0.6rem 0.8rem;
+
+    > p {
+      margin-left: 8px;
+    }
   }
 }
 
@@ -141,6 +174,10 @@
   > p {
     flex: 1;
     line-height: 1.5;
+  }
+  &.isDone {
+    color: #666;
+    text-decoration: line-through;
   }
 
   .todo__item__actions {
@@ -163,10 +200,9 @@
 .todoFormSlideDown {
   @extend %flex-row-between-center;
   padding: 1rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
-  .todoFormSlideDown__form {
-    flex: 1;
-  }
   .goTop {
     cursor: pointer;
     transition: all 0.2s;
@@ -193,21 +229,12 @@
       margin-left: 0;
     }
   }
-  .todo__form__container {
-    input[type='text'] {
-      width: 250px;
-      padding: 0.4rem;
-    }
-  }
 
   button {
     padding: 0.4rem;
   }
 }
 @media only screen and (max-width: 480px) {
-  %container-base {
-    width: 100%;
-  }
   h1 {
     font-size: 1.5rem;
   }
@@ -223,8 +250,13 @@
     .goTop {
       display: none;
     }
-    > p {
-      display: none;
+  }
+
+  /* TodoForm */
+  .todo__form__container {
+    textarea {
+      padding: 0.5rem;
+      width: 100%;
     }
   }
 }

@@ -2,9 +2,9 @@ import { createContext, useState, useEffect } from "react";
 import { TodoFormProvider } from './TodoFormContext';
 export const TodoContext = createContext();
 
-const mockTodos = [...Array(10).keys()].map(elm => {
+const mockTodos = [...Array(20).keys()].map(elm => {
   return {
-    id: elm, text: elm + ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ab numquam commodi necessitatibus, eius atque sit accusamus voluptas esse labore magni! Atque placeat magnam voluptates aperiam? Unde nulla magnam libero!', isDone: false
+    id: elm, text: elm + ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ab numquam commodi necessitatibus, eius atque sit accusamus voluptas esse labore magni!', isDone: false
   }
 });
 
